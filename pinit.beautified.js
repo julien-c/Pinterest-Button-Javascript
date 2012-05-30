@@ -1,14 +1,15 @@
-(function (o, c) {
-    var r = function (h) {
-            var e = c.endpoint,
+(function (o, q, c) {
+    var s = function (h) {
+            var e = c.pinit,
                 m = "?",
                 a, i, f, b;
             f = [];
             b = [];
             var j = {},
                 g = o.createElement("IFRAME"),
-                q = h.getAttribute(c.att.count) || false,
+                r = h.getAttribute(c.att.count) || false,
                 n = h.getAttribute(c.att.layout) || "horizontal";
+            if (q.location.protocol === "https:") e = c.pinit_secure;
             f = h.href.split("?")[1].split("#")[0].split("&");
             a = 0;
             for (i = f.length; a < i; a += 1) {
@@ -32,7 +33,7 @@
                     if (j[b]) e = e + m + b + "=" + j[b]
                 }
                 e = e + "&layout=" + n;
-                if (q !== false) e += "&count=1";
+                if (r !== false) e += "&count=1";
                 g.setAttribute("src", e);
                 g.setAttribute("scrolling", "no");
                 g.allowTransparency = true;
@@ -48,13 +49,14 @@
     d = 0;
     for (l = p.length; d < l; d += 1) k.push(p[d]);
     d = 0;
-    for (l = k.length; d < l; d += 1) k[d].href && k[d].href.indexOf(c.button) !== -1 && r(k[d])
-})(document, {
+    for (l = k.length; d < l; d += 1) k[d].href && k[d].href.indexOf(c.button) !== -1 && s(k[d])
+})(document, window, {
     att: {
         layout: "count-layout",
         count: "always-show-count"
     },
-    endpoint: "//d3io1k5o0zdpqr.cloudfront.net/pinit.html",
+    pinit: "http://pinit-cdn.pinterest.com/pinit.html",
+    pinit_secure: "https://assets.pinterest.com/pinit.html",
     button: "//pinterest.com/pin/create/button/?",
     vars: {
         req: ["url", "media"],
