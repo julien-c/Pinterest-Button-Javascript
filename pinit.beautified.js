@@ -1,15 +1,15 @@
-(function (o, q, c) {
-    var s = function (h) {
-            var e = c.pinit,
-                m = "?",
+(function(m, q, c) {
+    var s = function(h) {
+            var d = c.pinit,
+                n = "?",
                 a, i, f, b;
             f = [];
             b = [];
             var j = {},
-                g = o.createElement("IFRAME"),
+                g = m.createElement("IFRAME"),
                 r = h.getAttribute(c.att.count) || false,
-                n = h.getAttribute(c.att.layout) || "horizontal";
-            if (q.location.protocol === "https:") e = c.pinit_secure;
+                o = h.getAttribute(c.att.layout) || "horizontal";
+            if (q.location.protocol === "https:") d = c.pinit_secure;
             f = h.href.split("?")[1].split("#")[0].split("&");
             a = 0;
             for (i = f.length; a < i; a += 1) {
@@ -20,8 +20,8 @@
             for (i = c.vars.req.length; a < i; a += 1) {
                 b = c.vars.req[a];
                 if (j[b]) {
-                    e = e + m + b + "=" + j[b];
-                    m = "&"
+                    d = d + n + b + "=" + j[b];
+                    n = "&"
                 }
                 f += 1
             }
@@ -30,26 +30,27 @@
                 a = 0;
                 for (i = c.vars.opt.length; a < i; a += 1) {
                     b = c.vars.opt[a];
-                    if (j[b]) e = e + m + b + "=" + j[b]
+                    if (j[b]) d = d + n + b + "=" + j[b]
                 }
-                e = e + "&layout=" + n;
-                if (r !== false) e += "&count=1";
-                g.setAttribute("src", e);
+                d = d + "&layout=" + o;
+                d = d + "&ref=" + encodeURIComponent(m.URL);
+                if (r !== false) d += "&count=1";
+                g.setAttribute("src", d);
                 g.setAttribute("scrolling", "no");
                 g.allowTransparency = true;
                 g.frameBorder = 0;
                 g.style.border = "none";
-                g.style.width = c.layout[n].width + "px";
-                g.style.height = c.layout[n].height + "px";
+                g.style.width = c.layout[o].width + "px";
+                g.style.height = c.layout[o].height + "px";
                 h.parentNode.replaceChild(g, h)
             } else h.parentNode.removeChild(h)
         },
-        p = o.getElementsByTagName("A"),
-        l, d, k = [];
-    d = 0;
-    for (l = p.length; d < l; d += 1) k.push(p[d]);
-    d = 0;
-    for (l = k.length; d < l; d += 1) k[d].href && k[d].href.indexOf(c.button) !== -1 && s(k[d])
+        p = m.getElementsByTagName("A"),
+        l, e, k = [];
+    e = 0;
+    for (l = p.length; e < l; e += 1) k.push(p[e]);
+    e = 0;
+    for (l = k.length; e < l; e += 1) k[e].href && k[e].href.indexOf(c.button) !== -1 && s(k[e])
 })(document, window, {
     att: {
         layout: "count-layout",
